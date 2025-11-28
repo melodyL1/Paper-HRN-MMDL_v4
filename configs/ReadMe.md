@@ -14,6 +14,8 @@
                                       'VisionTransformer','NextViT',
                                       'TransHSI','HRN']
 * Test period model：: name. ['MultiModelTrans']
+
+* Dataset acquisition:https://pan.baidu.com/s/1KdNan3MhjEXk40P77IIrPQ?pwd=xma2 Extraction code:xma2
 * 注意事项：（1）背景值不参与训练，标签值设置为0。
             （2）对于一些多源数据模型的信息备注：MultiModelCNN适用信息为Multispectral、SAR、DEM；
                                                  HRN适用各类传感器信息。
@@ -75,3 +77,4 @@
                             zipp                 3.23.0
             （4）CUDA版本：release 12.8, V12.8.61
                  cuDNN版本：8.9.7.29
+
