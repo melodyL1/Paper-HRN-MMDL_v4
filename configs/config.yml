@@ -1,0 +1,59 @@
+Run_ID: ACC_IP
+GPU: 0
+Random_seed: 1337
+Project: 'Munich480'
+Root_path: 0
+Model: TransHSI
+
+Model_detail:
+  Shallow_Multimodal: false
+  Shallow_Network: RF
+  Network_Dilated: 1
+  Model_Type: classification
+
+Data:
+  band_selection: [0,79]
+  data: ndvi_sar_band_dem.tif
+  y: y.tif
+  class: 10
+  modes_number: "10,29,29,11"
+
+Preprocessing:
+  PCA: 0
+  Standard_Scaler: true
+  normalization: "false,false,false,false"
+  PP_size: 5
+  y_remove_zeros: true
+  manual_segmentation: true
+  train_val_test_percent: [0.3,0.2,0.5]
+  y_train_tif: train.tif
+  y_test_tif: test.tif
+  big_data_batch: 5
+
+Train:
+  batch_size: 18
+  best_model_path: best_model.pth.tar
+  continue_path: continue/continue_training.pkl
+  epochs: 100
+  loss:
+    name: cross_entropy
+  lr_schedule: null
+  n_workers: 1
+  optimizer:
+    lr: 0.001
+    weight_decay: 0.001
+    optimizer_detail:
+      optimizer_name: SGD
+      alpha: 0.9
+      betas:
+      - 0.8
+      - 0.99
+      momentum: 0.9
+  print_interval: 1
+  val_interval: 1
+
+Test:
+  batch_size: 32
+
+Prediction:
+  batch_size: 200

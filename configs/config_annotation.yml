@@ -1,0 +1,59 @@
+Run_ID: ACC_IP # 测试优化次数
+GPU: 0 # 显卡选择
+Random_seed: 1337 # 随机种子数
+Project: 'ceshi' # 工程名称
+Root_path: 0 # 数据路径重置
+Model: HRN # 模型选择
+
+Model_detail:
+  Shallow_Multimodal: false # 多模态浅层网络
+  Shallow_Network: RF # 浅层网络模型
+  Network_Dilated: 1 # 多模态网络加宽，主要是注意力机制上的加宽，比如CBAM作为计数1的加宽
+  Model_Type: classification # 模型类型，例如：classification；regression等
+
+Data:
+  band_selection: [0,8] # 波段选择,[0,8]表示取前8个波段，共取了8 - 0 = 8个波段,[2,6]表示取前3、4、5、6波段，共取了6 - 2 = 4个波段。
+  data: ndvi_band_dsm.tif # 特征数据集
+  y: y.tif # 标签数据集
+  class: 6 # 分类类别
+  modes_number: "2,5,1" # 各个模态波段数量（顺序排列）
+
+Preprocessing:
+  PCA: 0 # 主成分分析,参数为PCA至的波段数（附加了Standard Scaler处理,将数据转换为均值为 0、标准差为 1 的标准正态分布）
+  Standard_Scaler: false # 数据集标准化
+  normalization: "true,true,true"  # 数据集归一化（各个模态）
+  PP_size: 5 # 切片大小
+  y_remove_zeros: true # 是否移除0标签值
+  manual_segmentation: true # 是否使用手动分割数据集
+  train_val_test_percent: [0.5,0.2,0.3] # 数据集分割比例，注意先分出train，再从剩余的分出参数比例的val，剩余的为test
+  y_train_tif: train.tif # 标签数据文件名
+  y_test_tif: test.tif  # 手动分割的测试集与
+  big_data_batch: 5 # 对于较大的数据集，将缓存分割多份后缓存到硬盘，防止显存与内存不足
+
+Train:
+  batch_size: 16 # 批训练
+  best_model_path: best_model.pth.tar # 训练模型文件名索引
+  continue_path: continue/continue_training.pkl # 继续训练索引
+  epochs: 20 # 迭代次数
+  loss:
+    name: cross_entropy # 损失函数
+  lr_schedule: null # 学习率调度器，根据训练的进程动态调整学习率
+  n_workers: 1 # 进程数量
+  optimizer:
+    lr: 0.001 # 学习率
+    weight_decay: 0.001 # 权重衰减
+    optimizer_detail:
+      optimizer_name: SGD # 优化器
+      alpha: 0.9 # 动量
+      betas:
+      - 0.8 # 一阶矩估计（梯度均值）的指数衰减率
+      - 0.99 # 二阶矩估计（梯度方差）的指数衰减率
+      momentum: 0.9 # 动量参数
+  print_interval: 1
+  val_interval: 1
+
+Test:
+  batch_size: 32 # 测试集批处理
+
+Prediction:
+  batch_size: 200 # 预测批处理
