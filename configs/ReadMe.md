@@ -14,8 +14,8 @@
                                       'VisionTransformer','NextViT',
                                       'TransHSI','HRN']
 * Test period model: name. ['MultiModelTrans']
-* Dataset：dataset.zip链接:Paper-HRN: https://pan.baidu.com/s/1n-tKbcfmfEpn1cMv7Jroxw. Extraction code: 1as8 
-* Dataset：dataset.zip链接:Paper-MultiModelTrans: https://pan.baidu.com/s/19fjcdIntO7j7xIpJe6cMXA. Extraction code: hntp 
+* Dataset：dataset.zip链接:Paper-HRN: https://pan.baidu.com/s/1_KviIOMhVugBGYoupbV1xw. Extraction code: usvj 
+* Dataset：dataset.zip链接:Paper-MultiModelTrans: https://pan.baidu.com/s/1CH9NN26c-TQ-jn5RHo2iqw. Extraction code: 59nf
 
 * 注意事项：（1）背景值不参与训练，标签值设置为0。
             （2）对于一些多源数据模型的信息备注：MultiModelCNN适用信息为Multispectral、SAR、DEM；
