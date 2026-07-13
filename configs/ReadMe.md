@@ -14,7 +14,7 @@
                                       'VisionTransformer','NextViT',
                                       'TransHSI','HRN']
 * Test period model: name. ['MultiModelTrans']
-* Dataset：dataset.zip链接:Paper-HRN：https://pan.baidu.com/s/1-_sisxf-eL1ajguG_CjinA. Extraction code: sxkt
+* Dataset：dataset.zip链接:Paper-HRN: https://pan.baidu.com/s/1n-tKbcfmfEpn1cMv7Jroxw. Extraction code: 1as8 
 * Dataset：dataset.zip链接:Paper-MultiModelTrans: https://pan.baidu.com/s/19fjcdIntO7j7xIpJe6cMXA. Extraction code: hntp 
 
 * 注意事项：（1）背景值不参与训练，标签值设置为0。
